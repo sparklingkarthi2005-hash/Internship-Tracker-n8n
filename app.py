@@ -104,5 +104,9 @@ def get_reminders():
     return jsonify(result)
 
 if __name__ == '__main__':
-    # use_reloader=False mukkiam, illana scheduler rendu thadava run aagum
-    app.run(debug=True, use_reloader=False)
+    import os
+    # Railway thara PORT-ai dynamic-ah edukkum
+    port = int(os.environ.get("PORT", 5000))
+    
+    # host='0.0.0.0' kudutha thaan internet-la website load aagum
+    app.run(host='0.0.0.0', port=port, debug=True, use_reloader=False)
